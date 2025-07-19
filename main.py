@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import os
 
-TOKEN = "YOUR_BOT_TOKEN"
+TOKEN = os.getenv("DISCORD_TOKEN")  # Secure: from environment variable
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -22,4 +22,7 @@ async def hello(ctx):
 async def say(ctx, *, message):
     await ctx.send(message)
 
-bot.run(TOKEN)
+if not TOKEN:
+    print("❌ DISCORD_TOKEN environment variable not found! Set it in Render.")
+else:
+    bot.run(TOKEN)
