@@ -25,4 +25,4 @@ async def say(ctx, *, message):
 if not TOKEN:
     print("❌ DISCORD_TOKEN environment variable not found! Set it in Render.")
 else:
-    bot.run(TOKEN)
+    bot.run(TOKEN) 
